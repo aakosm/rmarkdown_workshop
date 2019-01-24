@@ -1,0 +1,26 @@
+---
+title: "The richer you, the longer you live"
+author: "Captain Obvious"
+date: '2018-07-30'
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+
+```
+
+In this reprt we investigate the possible connection between life expectancy and GDP per capita. To illustrate our point we will plot the correlation.
+
+```{r, echo = FALSE}
+library(ggplot2)
+library(dplyr)
+library(gapminder)
+
+
+ggplot(data = gapminder,
+       mapping = aes(x = gdpPercap,
+                     y = lifeExp)) +
+    geom_point()
+```
