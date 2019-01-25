@@ -355,7 +355,7 @@ An alternative package for both the html and LaTeX output is `xtable`, which hav
 
 # 2. Example document with various R output
 
-A quick example of what a possible article written in RMarkdown looks like is here:
+A quick example of what a possible article written in RMarkdown looks like is here: [https://github.com/aakosm/rmarkdown_workshop/blob/master/rmd_example/ex2.pdf](https://github.com/aakosm/rmarkdown_workshop/blob/master/rmd_example/ex2.pdf)
 
 
 The source for that document is in the Github repository "/rmd_example/ex2.rmd", but for posterity, here is the rmd source (note: you will need the mybib.bib for it to run, which is also in the same folder)
