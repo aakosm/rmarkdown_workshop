@@ -296,9 +296,9 @@ div.tocify {
 <p>Supplementary resources:<br />
 - <a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a>,<br />
 - <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R markdown cheat sheet</a>,<br />
-- <a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">RStudio - Bibliographies and Citations</a>,<br />
-- <a href="https://holtzy.github.io/Pimp-my-rmd/">Pimp my RMD - a few tips for R Markdown</a>,<br />
-- <a href="https://kieranhealy.org/blog/archives/2014/01/23/plain-text/">Plain text, papers, pandoc</a>,<br />
+- <a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">RStudio: Bibliographies and Citations</a>,<br />
+- <a href="https://holtzy.github.io/Pimp-my-rmd/">Yan Holtz: Pimp my RMD - a few tips for R Markdown</a>,<br />
+- <a href="https://kieranhealy.org/blog/archives/2014/01/23/plain-text/">Kieran Healy: Plain text, papers, pandoc</a>,<br />
 - <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">Create Awesome HTML Table with knitr::kable and kableExtra</a></p>
 </blockquote>
 <p>In this workshop the focus is on getting all the stuff out of R. We will cover how to create html (such as this), pdf (like a LaTeX document) or Word output from R, or how to get just individual results, such as regression tables. Communicating research is a fundamental part of the (academic) research process.</p>
@@ -1068,7 +1068,7 @@ F Statistic
 <pre class="r"><code>stargazer(m2, title = &quot;Regression result&quot;, dep.var.labels = &quot;Ozone levels&quot;, type = &quot;latex&quot;)
 #&gt; 
 #&gt; % Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-#&gt; % Date and time: Fri, Jan 25, 2019 - 10:57:43 AM
+#&gt; % Date and time: Fri, Jan 25, 2019 - 12:10:21 PM
 #&gt; \begin{table}[!htbp] \centering 
 #&gt;   \caption{Regression result} 
 #&gt;   \label{} 
@@ -1107,7 +1107,92 @@ F Statistic
 </div>
 <div id="example-document-with-various-r-output" class="section level1">
 <h1>2. Example document with various R output</h1>
-<p>rmd example2, with plot, table, regression table and citation.</p>
+<p>A quick example of what a possible article written in RMarkdown looks like is here: <a href="https://github.com/aakosm/rmarkdown_workshop/blob/master/rmd_example/ex2.pdf" class="uri">https://github.com/aakosm/rmarkdown_workshop/blob/master/rmd_example/ex2.pdf</a></p>
+<p>The source for that document is in the Github repository “/rmd_example/ex2.rmd”, but for posterity, here is the rmd source (note: you will need the mybib.bib for it to run, which is also in the same folder)</p>
+<pre><code>#&gt; ---
+#&gt; title: &quot;Insightful paper example&quot;
+#&gt; author: Akos Mate
+#&gt; date: &quot;January 2019&quot;
+#&gt; output: pdf_document
+#&gt; bibliography: mybib.bib
+#&gt; abstract: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+#&gt;   tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis
+#&gt;   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+#&gt;   aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+#&gt;   nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+#&gt;   officia deserunt mollit anim id est laborum.
+#&gt; ---
+#&gt; 
+#&gt; ```{r setup, include=FALSE}
+#&gt; knitr::opts_chunk$set(echo = FALSE,
+#&gt;                       message = FALSE,
+#&gt;                       warning = FALSE,
+#&gt;                       fig.pos = 'h!'
+#&gt; )
+#&gt; ```
+#&gt; 
+#&gt; ```{r, echo = FALSE}
+#&gt; library(ggplot2)
+#&gt; library(dplyr)
+#&gt; library(gapminder)
+#&gt; library(stargazer)
+#&gt; ```
+#&gt; 
+#&gt; # Introduction
+#&gt; 
+#&gt; **Example article, based on the post of [Kieran Healy: Plain text, papers, pandoc (click if you want to dig deeper)](https://kieranhealy.org/blog/archives/2014/01/23/plain-text/).**
+#&gt; 
+#&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+#&gt; 
+#&gt; In this reprt we investigate the possible connection between life expectancy and GDP per capita. To illustrate our point we will plot the correlation.
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; ```{r, fig.width=4, fig.height=3, fig.align='center', fig.cap=&quot;Effect of GDP per capita on life expectancy&quot;}
+#&gt; ggplot(data = gapminder,
+#&gt;        mapping = aes(x = log(gdpPercap),
+#&gt;                      y = lifeExp)) +
+#&gt;     geom_point(alpha = 0.3) +
+#&gt;     geom_smooth(method = &quot;lm&quot;) +
+#&gt;     labs(x = &quot;GDP per capita (log)&quot;,
+#&gt;          y = &quot;Life expectancy&quot;,
+#&gt;          caption = &quot;note: Observations are country years&quot;) +
+#&gt;     theme_minimal()
+#&gt; ```
+#&gt; 
+#&gt; 
+#&gt; # Discussion
+#&gt; 
+#&gt; And we run a regression to prove it. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+#&gt; 
+#&gt; ```{r results = &quot;asis&quot;}
+#&gt; cs_gapminder &lt;- gapminder %&gt;% 
+#&gt;     filter(year == 2007)
+#&gt; 
+#&gt; m1 &lt;- lm(lifeExp ~ log(gdpPercap), data = cs_gapminder)
+#&gt; 
+#&gt; m2 &lt;- lm(lifeExp ~ log(gdpPercap) + pop, data = cs_gapminder)
+#&gt; 
+#&gt; m3 &lt;- lm(lifeExp ~ log(gdpPercap) + pop + continent, data = cs_gapminder)
+#&gt; 
+#&gt; stargazer(m1, m2, m3, title = &quot;OLS models&quot;, dep.var.labels = &quot;Life Expectancy&quot;, covariate.labels = c(&quot;GDP per capita (log)&quot;, &quot;Population&quot;, &quot;Continent&quot;), type = &quot;latex&quot;, header = FALSE)
+#&gt; ```
+#&gt; 
+#&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+#&gt; 
+#&gt; 
+#&gt; Also a summary table for the mtcars dataset.
+#&gt; 
+#&gt; ```{r results = &quot;asis&quot;}
+#&gt; stargazer(mtcars, title = &quot;Descriptive statistics&quot;, header = FALSE)
+#&gt; ```
+#&gt; 
+#&gt; 
+#&gt; # Conclusion
+#&gt; 
+#&gt; We used [@gapminder2017] dataset to investigate all we wanted to now. Now we are reasonably sure, that Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Also, [@stargazer2018].
+#&gt; 
+#&gt; # Bibliography</code></pre>
 </div>
 <div id="bibliography" class="section level1 unnumbered">
 <h1>Bibliography</h1>
