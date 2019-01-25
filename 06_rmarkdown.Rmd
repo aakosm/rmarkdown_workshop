@@ -25,11 +25,11 @@ knitr::opts_chunk$set(echo = TRUE,
 > - [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/),    
 > - [R markdown cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf),    
 > - [RStudio - Bibliographies and Citations](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html),    
-> - [Pimp my RMD - a few tips for R Markdown](https://holtzy.github.io/Pimp-my-rmd/),
-> - [Plain text, papers, pandoc](https://kieranhealy.org/blog/archives/2014/01/23/plain-text/),
+> - [Pimp my RMD - a few tips for R Markdown](https://holtzy.github.io/Pimp-my-rmd/),   
+> - [Plain text, papers, pandoc](https://kieranhealy.org/blog/archives/2014/01/23/plain-text/),     
 > - [Create Awesome HTML Table with knitr::kable and kableExtra](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)  
 
-In this session the focus is on getting all the stuff out of R that we've been doing so far. We will cover how to create html (such as this), pdf (like a LaTeX document) or Word output from R, or how to get just individual results, such as regression tables. Communicating research is a fundamental part of the (academic) research process, so this session will look at all the ways we can extract info from R.
+In this workshop the focus is on getting all the stuff out of R. We will cover how to create html (such as this), pdf (like a LaTeX document) or Word output from R, or how to get just individual results, such as regression tables. Communicating research is a fundamental part of the (academic) research process.
 
 # 1. RMarkdown
 
@@ -216,7 +216,7 @@ Possible output options are:
 * `rtf_document` creates Rich Text Format with `.rtf` extension
 
 
-The `bibliography` is one of the key argument if you are writing academic papers. For this to work, you'll need a BibTeX file (with `.bib` extension), which is essentially a plain text file with your bib citation. If you use (you should!!!!) any citation manager, there is an option to export your citations into a Bib file. A bibtex formatted citation looks like this:
+The `bibliography` is one of the key argument if you are writing academic papers. For this to work, you'll need a BibTeX file (with `.bib` extension), which is essentially a plain text file with your bib citation. If you use **(you should!!!!)** any citation manager, there is an option to export your citations into a Bib file. A bibtex formatted citation looks like this:
 
 ```
 @article{albrecht1999time,
@@ -355,7 +355,13 @@ An alternative package for both the html and LaTeX output is `xtable`, which hav
 
 # 2. Example document with various R output
 
-rmd example2, with plot, table, regression table and citation.
+A quick example of what a possible article written in RMarkdown looks like is here:
+
+
+The source for that document is in the Github repository "/rmd_example/ex2.rmd", but for posterity, here is the rmd source (note: you will need the mybib.bib for it to run, which is also in the same folder)
+```{r example2, echo=FALSE}
+cat(htmltools::includeText("rmd_example/ex2.rmd"))
+```
 
 
 # Bibliography

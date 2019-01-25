@@ -1,9 +1,8 @@
 ---
-title: "The richer you, the longer you live"
-author: "Captain Obvious"
+title: "Analysis of determinants of life expectancy"
+author: "Akos Mate"
 date: '2018-07-30'
 output:
-  pdf_document: default
   html_document: default
 ---
 
