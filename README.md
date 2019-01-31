@@ -2,6 +2,8 @@
 
 ## A PERG workshop
 
+**> The compiled html is here: [https://aakosm.github.io/rmarkdown_workshop](https://aakosm.github.io/rmarkdown_workshop)**
+
 This is a repository for the workshop with the `.rmd` sources that generate the `rmarkdown_workshop.html`. To replicate the rmd examples just clone or download the `\rmd_examle` folder.
 
 Don't forget to check out the additional materials if you are interested:
